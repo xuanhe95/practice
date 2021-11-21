@@ -4,35 +4,38 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
 # Press the green button in the gutter to run the script.
-import math
-x=int(input('x:'))
-y=int(input('y:'))
+
+print('hello')
+
+x=3141592653589793238462643383279502884197169399375105820974944592
+
+y=2718281828459045235360287471352662497757247093699959574966967627
+
 n=len(str(x))
+
 def recursion(x,y,n):
 
     if n==1:
-        sign = x * y
 
-        return sign
-    else:
-        a=x//math.pow(10,n/2)
-        b=x%math.pow(10,n/2)
-        c=y//math.pow(10,n/2)
-        d=y%math.pow(10,n/2)
-        ac=recursion(a,c,n/2)
-        bd=recursion(b,d,n/2)
-        abcd=recursion((a-b),(d-c),n/2)+ac+bd
-
-        return ac*math.pow(10,n)+abcd*math.pow(10,n/2)+bd
+        return x*y
 
 
-print(recursion(x,y,n))
+    a=x//10**(n//2)
+    b=x%10**(n//2)
+    c=y//10**(n//2)
+    d=y%10**(n//2)
+
+    ac=recursion(a,c,n//2)
+    bd=recursion(b,d,n//2)
+
+    z=recursion((a+b),(c+d),n//2)-ac-bd
+
+    print((n//2))
+
+    return ac*10**n+z*10**(n//2)+bd
+
+print(int((recursion(x,y,n))))
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
